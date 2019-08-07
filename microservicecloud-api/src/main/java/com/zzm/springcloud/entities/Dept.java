@@ -1,4 +1,4 @@
-package com.zzm.springcloud.model;
+package com.zzm.springcloud.entities;
 
 
 import lombok.AllArgsConstructor;
