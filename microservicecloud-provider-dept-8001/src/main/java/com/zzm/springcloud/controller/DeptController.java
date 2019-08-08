@@ -40,10 +40,10 @@ public class DeptController {
 
     @RequestMapping(value = "/dept/get/{id}",method = RequestMethod.GET)
     public ResponseResult get(@PathVariable("id") Long id){
+        System.out.println("dept get............");
         ResponseResult responseResult=new ResponseResult();
         try{
-            Dept dept=null;
-            dept=deptService.get(id);
+            Dept dept=deptService.get(id);
             if(dept!=null){
                 responseResult.setCode(MessageCode.IS_OK);
                 responseResult.setData(JSON.toJSONString(dept));
