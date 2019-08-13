@@ -9,7 +9,7 @@ eureka:
           instance-id: microservicecloud-consumer-dept80         #自定义服务实例名称
           prefer-ip-address: true                                  #是否显示服务IP信息
   instance:
-      instance-id: microservicecloud-consumer-dept80        #自定义服务实例名称
+      instance-id: microservicecloud-consumer-dept80         #自定义服务实例名称
       prefer-ip-address: true                                  #是否显示服务IP信息
 #点击服务实例名时显示的信息配置
 info:

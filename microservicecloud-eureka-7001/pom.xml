@@ -12,6 +12,20 @@
     <artifactId>microservicecloud-eureka-7001</artifactId>
 
 <dependencies>
+    <!-- eureka-server服务端 服务端后面带server 客户端不带 -->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-eureka-server</artifactId>
+    </dependency>
 
+    <!-- 热部署 -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>springloaded</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+    </dependency>
 </dependencies>
 </project>

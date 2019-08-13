@@ -38,6 +38,7 @@
         </dependencies>
     </dependencyManagement>
 
+    <!-- 表示可以显示应用 resource下的文件里的信息   yml文件的动态参数在 $ $之间 -->
     <build>
         <finalName>microservicecloud</finalName>
         <resources>
@@ -67,6 +68,9 @@
         <module>microservicecloud-provider-dept-hystrix-8001</module>
         <module>microservicecloud-consumer-dept-80</module>
         <module>microservicecloud-eureka-7001</module>
+        <module>microservicecloud-eureka-7002</module>
+        <module>microservicecloud-eureka-7003</module>
+        <module>microservicecloud-consumer-dept-feign</module>
     </modules>
 
 

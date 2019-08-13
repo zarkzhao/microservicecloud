@@ -7,7 +7,13 @@ import com.zzm.springcloud.dto.MessageCode;
 import com.zzm.springcloud.dto.ResponseResult;
 import com.zzm.springcloud.entities.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +23,9 @@ import java.util.List;
 public class DeptController {
     @Autowired
     private DeptServiceImpl deptService;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
 
     @RequestMapping(value = "/dept/list",method = RequestMethod.GET)
     public ResponseResult list(){
@@ -77,5 +86,16 @@ public class DeptController {
             responseResult.setMessage("新增报错，错误信息"+e.getMessage());
         }
         return responseResult;
+    }
+
+    @RequestMapping(value = "/dept/discovery",method = RequestMethod.GET)
+    public Object discovery(){
+        List<String>  list=discoveryClient.getServices();
+        System.out.println(">>>>>>>>>>>>>client list:"+list);
+        List<ServiceInstance> clients=discoveryClient.getInstances("MICROSERVICECLOUD-PROVIDER-DEPT");
+        for(ServiceInstance instance:clients){
+            System.out.println(">>>>>>>>>>>service info\t serviceId:"+instance.getServiceId()+"\t host:"+instance.getHost()+"\t port:"+instance.getPort()+"\t uri:"+instance.getUri());
+        }
+        return discoveryClient;
     }
 }
